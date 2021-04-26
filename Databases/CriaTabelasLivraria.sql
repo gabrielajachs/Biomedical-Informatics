@@ -1,0 +1,42 @@
+CREATE TABLE Editora (
+codeditora INTEGER(10),
+nome VARCHAR(100),
+CONSTRAINT PK_EDITORA PRIMARY KEY(codeditora)
+);
+
+CREATE TABLE Assunto (
+sigla CHAR(1),
+descricao VARCHAR(100),
+CONSTRAINT PK_ASSUNTO PRIMARY KEY(sigla)
+);
+
+CREATE TABLE Livro (
+codlivro INTEGER(10),
+titulo VARCHAR(100),
+preco NUMERIC(10,2),
+lancamento DATE,
+codeditora INTEGER(10),
+sigla CHAR(1),
+CONSTRAINT PK_LIVRO PRIMARY KEY(codlivro),
+CONSTRAINT FK_EDITORA_LIVRO FOREIGN KEY(codeditora) REFERENCES Editora(codeditora),
+CONSTRAINT FK_ASSUNTO_LIVRO FOREIGN KEY(sigla) REFERENCES Assunto(sigla)
+);
+
+CREATE TABLE Autor (
+matricula INTEGER(10),
+cpf INTEGER(10),
+nome VARCHAR(100),
+datanascimento DATE,
+endereco VARCHAR(100),
+nacionalidade VARCHAR(100),
+CONSTRAINT PK_AUTOR PRIMARY KEY(matricula),
+CONSTRAINT UK_AUTOR UNIQUE KEY(cpf)
+);
+
+CREATE TABLE Escreve (
+matricula INTEGER(10),
+codlivro INTEGER(10),
+CONSTRAINT PK_ESCREVE PRIMARY KEY(matricula,codlivro),
+CONSTRAINT FOREIGN KEY(matricula) REFERENCES Autor (matricula),
+CONSTRAINT FOREIGN KEY(codlivro) REFERENCES Livro (codlivro) ON DELETE CASCADE
+);
