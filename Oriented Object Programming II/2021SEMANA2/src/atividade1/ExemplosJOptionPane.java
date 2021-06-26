@@ -11,7 +11,7 @@ public class ExemplosJOptionPane {
 		
 		//dialogo de mensagem
 		
-		//JOptionPane.showMessageDialog(null, "Emitindo uma mensagem");
+		JOptionPane.showMessageDialog(null, "Emitindo uma mensagem");
 		//JOptionPane.showMessageDialog(null, "Emitindo um alerta!", "Titulo da Caixa", 2, new ImageIcon(ExemplosJOptionPane.class.getResource("/figuras/alert.png")));
 		//JOptionPane.showMessageDialog(null, "Emitindo um alerta!", "Titulo da Caixa", 2, null);
 		
